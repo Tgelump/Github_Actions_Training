@@ -10,6 +10,18 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+
+      - run: node -e "console.log('running from node!')"
+      
   build:
     runs-on: ubuntu-latest
     steps:
@@ -23,13 +35,4 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24.x
-
-      - run: node -e "console.log('running from node!')"
